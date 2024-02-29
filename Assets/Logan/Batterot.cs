@@ -6,7 +6,6 @@ public class Batterot : MonoBehaviour
 {
     private Vector3 _mousePos;
     private Camera _mainCam;
-    private bool inverted;
     private SpriteRenderer spriteRenderer;
     private void Awake()
     {
