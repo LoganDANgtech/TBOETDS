@@ -7,10 +7,12 @@ public class Batterot : MonoBehaviour
     private Vector3 _mousePos;
     private Camera _mainCam;
     private SpriteRenderer spriteRenderer;
+    private Transform hitboxTransform;
     private void Awake()
     {
         _mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        hitboxTransform = transform.Find("battehitbox");
     }
 
     void Update()
@@ -24,6 +26,7 @@ public class Batterot : MonoBehaviour
         {
             if (spriteRenderer.flipY)
             {
+                hitboxTransform.rotation = Quaternion.Euler(0, 0, 0);
                 spriteRenderer.flipY = false;
             }
         }
@@ -31,6 +34,7 @@ public class Batterot : MonoBehaviour
         {
             if (!spriteRenderer.flipY)
             {
+                hitboxTransform.rotation = Quaternion.Euler(-180, -180, 0);
                 spriteRenderer.flipY = true;
             }
         }
