@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Batterot : MonoBehaviour
@@ -26,7 +27,7 @@ public class Batterot : MonoBehaviour
         {
             if (spriteRenderer.flipY)
             {
-                hitboxTransform.rotation = Quaternion.Euler(0, 0, 0);
+                hitboxTransform.Rotate(-180,0,0);
                 spriteRenderer.flipY = false;
             }
         }
@@ -34,7 +35,7 @@ public class Batterot : MonoBehaviour
         {
             if (!spriteRenderer.flipY)
             {
-                hitboxTransform.rotation = Quaternion.Euler(-180, -180, 0);
+                hitboxTransform.Rotate(-180, 0, 0);
                 spriteRenderer.flipY = true;
             }
         }

@@ -5,12 +5,12 @@ public class Batteatk : MonoBehaviour
 {
     public GameObject[] chargeup;
     public Animator animator;
-    public BoxCollider2D battecollider;
+    public CapsuleCollider2D battecollider;
     private bool charged = false;
 
     private void Start()
     {
-        battecollider = GetComponent<BoxCollider2D>();
+        battecollider = GetComponent<CapsuleCollider2D>();
     }
     void Update()
     {

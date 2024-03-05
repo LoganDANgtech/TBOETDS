@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Playeratk
   - ennemy
+  - Playerbatte
   layers:
   - Default
   - TransparentFX
