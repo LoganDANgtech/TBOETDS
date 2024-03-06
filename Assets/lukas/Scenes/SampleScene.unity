@@ -187,6 +187,7 @@ MonoBehaviour:
   - {fileID: 7899261969389044990, guid: 2350a34e5cd53ea42a046664e2b1ef87, type: 3}
   - {fileID: 2273463268333874016, guid: cd7fc2480325aad42a24e444dbb286e4, type: 3}
   - {fileID: 3269384247390564134, guid: 7ebfda348a4c4f24fa9a29fef146dff1, type: 3}
+  _Start: {fileID: 0}
   _last: {fileID: 0}
   _BossRoom: {fileID: 0}
   _BossX: 0

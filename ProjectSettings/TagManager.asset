@@ -16,6 +16,9 @@ TagManager:
   - SolidObject
   - InteractionObject
   - AssetLambda
+  - BossRoom
+  - StartRoom
+  - RandomRoom
   - AssetBoss
   layers:
   - Default
