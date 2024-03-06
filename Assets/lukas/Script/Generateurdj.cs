@@ -5,6 +5,10 @@ using UnityEngine.Rendering;
 using System;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor.MemoryProfiler;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
+
 public class Point
 {
     public int x;
@@ -26,6 +30,14 @@ public class Generateurdj : MonoBehaviour
     public int seed = 42;
     public GameObject[] tiles;
     private int width, height;
+    public GameObject _last;
+    public GameObject _BossRoom;
+    public GameObject[,] MainGrid = new GameObject [9, 9];
+    public GameObject[,] SubGrid = new GameObject[9, 9];
+    public bool[,] OpensDoor = new bool[9, 9];
+    public int _BossX;
+    public int _BossY;
+    public GameObject RoomToBoss;
 
     [System.Obsolete]
     void Start()
@@ -57,7 +69,7 @@ public class Generateurdj : MonoBehaviour
                 }
                 if (i == 0)
                 {
-                    int randomSide = random.Next(0, 4);
+                    int randomSide = random.Next(1, 3);
                     for (int l = randomSide; l > 0; l--)
                     {
                         directionsPop.Remove(directionsPop[l]);
@@ -119,13 +131,13 @@ public class Generateurdj : MonoBehaviour
         TilesInstant(indexedArea);
     }
 
-    private void TilesInstant(int[,] tab)
+    void TilesInstant(int[,] tab)
     {
         int middleX = Mathf.RoundToInt(width / 2);
         int middleY = Mathf.RoundToInt(height / 2);
         int dist = 0;
-        GameObject last = new GameObject();
         System.Random random = new System.Random();
+        
 
         for (int x = 0; x < width; x++)
         {
@@ -133,33 +145,96 @@ public class Generateurdj : MonoBehaviour
             {
                 if (tab[y, x] != 0)
                 {
-                    GameObject go = Instantiate(tiles[tab[y, x] - 1], new Vector3(x - middleX, y - middleY, 0), Quaternion.identity);
+                    GameObject goMap = Instantiate(tiles[tab[y, x] - 1], new Vector3(x - middleX, y - middleY-50, 0), Quaternion.identity);
+                    GameObject goMain = Instantiate(tiles[tab[y, x] +14], new Vector3((float)(x - 17 * middleX + (x * 17)), y - 9 * middleY + y * 9, 0), Quaternion.identity);
+                    MainGrid[y, x] = goMain;
+                    SubGrid[y, x] = goMap;
+                    OpensDoor[y, x] = false;
+
                     if (y == middleY && x == middleX)
                     {
-                        go.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0.5f, 1);
+                        goMap.GetComponent<SpriteRenderer>().color = Color.green;
+                        GameObject door = goMain.transform.Find("Doors").gameObject;
+
+                        for (int i = 0; i < door.transform.childCount; i++)
+                        {
+                            door.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.blue;
+                        }
+                        OpensDoor[y, x] = true;
+                    }
+                    else
+                    {
+                        goMap.GetComponent<SpriteRenderer>().color = Color.grey;
                     }
                     if ( dist < Math.Abs(x - middleX) + Math.Abs(y - middleY)){
                         dist = Math.Abs(x - middleX) + Math.Abs(y - middleY);
-                        last = go;
+                        _last = goMap;
+                        _BossRoom = goMain;
+                        _BossX = y;
+                        _BossY = x;
                     }
                     if (dist == Math.Abs(x - middleX) + Math.Abs(y - middleY)) {
                         int rouletteRusse = random.Next(0, 2);
                         if (rouletteRusse == 1) {
-                            last = go;
+                            _last = goMap;
+                            _BossRoom = goMain;
+                            _BossX = y;
+                            _BossY = x;
                         }
                     }
                 }
             }
         }
-        last.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0.5f, 1);
+        if (MainGrid[_BossX - 1, _BossY] is GameObject)
+        {
+            GameObject RoomToBoss = MainGrid[_BossX - 1, _BossY];
+            GameObject DoorsToBoss = RoomToBoss.transform.Find("Doors").gameObject;
+            GameObject preciseDoorToBoss = DoorsToBoss.transform.Find("Top").gameObject;
+            preciseDoorToBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+            GameObject DoorsBoss = _BossRoom.transform.Find("Doors").gameObject;
+            GameObject preciseDoorFromBoss = DoorsBoss.transform.Find("Bottom").gameObject;
+            preciseDoorFromBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+        }
+        else if (MainGrid[_BossX + 1, _BossY] is GameObject)
+        {
+            GameObject RoomToBoss = MainGrid[_BossX + 1, _BossY];
+            GameObject DoorsToBoss = RoomToBoss.transform.Find("Doors").gameObject;
+            GameObject preciseDoorToBoss = DoorsToBoss.transform.Find("Bottom").gameObject;
+            preciseDoorToBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+            GameObject DoorsBoss = _BossRoom.transform.Find("Doors").gameObject;
+            GameObject preciseDoorFromBoss = DoorsBoss.transform.Find("Top").gameObject;
+            preciseDoorFromBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+        }
+        else if (MainGrid[_BossX, _BossY - 1] is GameObject)
+        {
+            GameObject RoomToBoss = MainGrid[_BossX, _BossY - 1];
+            GameObject DoorsToBoss = RoomToBoss.transform.Find("Doors").gameObject;
+            GameObject preciseDoorToBoss = DoorsToBoss.transform.Find("Right").gameObject;
+            preciseDoorToBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+            GameObject DoorsBoss = _BossRoom.transform.Find("Doors").gameObject;
+            GameObject preciseDoorFromBoss = DoorsBoss.transform.Find("Left").gameObject;
+            preciseDoorFromBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+        }
+        else if (MainGrid[_BossX, _BossY + 1] is GameObject)
+        {
+            GameObject RoomToBoss = MainGrid[_BossX, _BossY + 1];
+            GameObject DoorsToBoss = RoomToBoss.transform.Find("Doors").gameObject;
+            GameObject preciseDoorToBoss = DoorsToBoss.transform.Find("Left").gameObject;
+            preciseDoorToBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+            GameObject DoorsBoss = _BossRoom.transform.Find("Doors").gameObject;
+            GameObject preciseDoorFromBoss = DoorsBoss.transform.Find("Right").gameObject;
+            preciseDoorFromBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+        }
+
     }
 
     private int[,] IndexAttribute(int[,] tab)
     {
+        //creation de tab
         int[,] indexes = new int[height, width];
         for (int x = 0; x < width; x++)
         {
-            for (int y = 0; y < width; y++)
+            for (int y = 0; y < height; y++)
             {
                 if (tab[y, x] == 1)
                 {

@@ -3,7 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BodyPlayer
+  - RightDoor
+  - LeftDoor
+  - BottomDoor
+  - TopDoor
+  - Batte
+  - Minimap
+  - CamMM
+  - Mob
+  - SolidObject
+  - InteractionObject
+  - AssetLambda
+  - AssetBoss
   layers:
   - Default
   - TransparentFX
