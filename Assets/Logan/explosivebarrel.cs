@@ -1,0 +1,64 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class explosivebarrel : MonoBehaviour
+{
+    private GameObject player;
+    private Rigidbody2D rb;
+    private float timer;
+    private Animator animator;
+    public float force = 10;
+    public bool bumped = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (bumped)
+        {
+            timer += Time.time;
+            if (timer > 3)
+            {
+                Boom();
+                Destroy(gameObject);
+            }
+        }
+    }
+    void Boom()
+    {
+        
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Playerbatte"))
+        {
+            force = 8;
+            Vector3 direction = (player.transform.position - transform.position) * -1;
+            rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+
+            float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, rot - 90);
+            bumped = true;
+        }
+        if (other.gameObject.CompareTag("Wall"))
+        {
+
+            Vector2 contactPoint = other.ClosestPoint(transform.position);
+            Vector2 contactNormal = ((Vector2)transform.position - contactPoint).normalized;
+
+            rb.velocity = Vector2.Reflect(rb.velocity, contactNormal).normalized * force;
+
+            float rotz = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, rotz - 180f);
+
+        }
+    }
+}
+
