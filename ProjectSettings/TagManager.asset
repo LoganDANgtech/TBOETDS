@@ -20,11 +20,18 @@ TagManager:
   - StartRoom
   - RandomRoom
   - AssetBoss
+  - ennemy
+  - Wall
+  - Playerbatte
+  - TreasureRoom
+  - obstacle
+  - weapon
+  - Audio
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - obstacles
   - Water
   - UI
   - 

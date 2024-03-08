@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEditor.MemoryProfiler;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
+using UnityEditor.Experimental.GraphView;
 
 public class Point
 {
@@ -38,7 +39,10 @@ public class Generateurdj : MonoBehaviour
     public bool[,] OpensDoor = new bool[9, 9];
     public int _BossX;
     public int _BossY;
+    public int _TreasureX;
+    public int _TreasureY;
     public GameObject RoomToBoss;
+    public GameObject _TreasureRoom;
 
     [System.Obsolete]
     void Start()
@@ -179,10 +183,19 @@ public class Generateurdj : MonoBehaviour
                     if (dist == Math.Abs(x - middleX) + Math.Abs(y - middleY)) {
                         int rouletteRusse = random.Next(0, 2);
                         if (rouletteRusse == 1) {
+                            _TreasureRoom = _BossRoom;
+                            _TreasureX = _BossX;
+                            _TreasureY = _BossY;
                             _last = goMap;
                             _BossRoom = goMain;
                             _BossX = y;
                             _BossY = x;
+                        }
+                        else
+                        {
+                            _TreasureRoom = goMain;
+                            _TreasureX = y;
+                            _TreasureY = x;
                         }
                     }
                 }
@@ -190,6 +203,7 @@ public class Generateurdj : MonoBehaviour
         }
         _Start.tag = "StartRoom";
         _BossRoom.tag = "BossRoom";
+        _TreasureRoom.tag = "TreasureRoom";
         if (MainGrid[_BossX - 1, _BossY] is GameObject)
         {
             GameObject RoomToBoss = MainGrid[_BossX - 1, _BossY];
@@ -229,6 +243,47 @@ public class Generateurdj : MonoBehaviour
             GameObject DoorsBoss = _BossRoom.transform.Find("Doors").gameObject;
             GameObject preciseDoorFromBoss = DoorsBoss.transform.Find("Right").gameObject;
             preciseDoorFromBoss.GetComponent<SpriteRenderer>().color = Color.grey;
+        }
+
+        if (MainGrid[_TreasureX - 1, _TreasureY] is GameObject)
+        {
+            GameObject RoomToTreasure = MainGrid[_TreasureX - 1, _TreasureY];
+            GameObject DoorsToTreasure = RoomToTreasure.transform.Find("Doors").gameObject;
+            GameObject preciseDoorToTreasure = DoorsToTreasure.transform.Find("Top").gameObject;
+            preciseDoorToTreasure.GetComponent<SpriteRenderer>().color = Color.green;
+            GameObject DoorsTreasure = _TreasureRoom.transform.Find("Doors").gameObject;
+            GameObject preciseDoorFromTreasure = DoorsTreasure.transform.Find("Bottom").gameObject;
+            preciseDoorFromTreasure.GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+        else if (MainGrid[_TreasureX + 1, _TreasureY] is GameObject)
+        {
+            GameObject RoomToTreasure = MainGrid[_TreasureX + 1, _TreasureY];
+            GameObject DoorsToTreasure = RoomToTreasure.transform.Find("Doors").gameObject;
+            GameObject preciseDoorToTreasure = DoorsToTreasure.transform.Find("Bottom").gameObject;
+            preciseDoorToTreasure.GetComponent<SpriteRenderer>().color = Color.green;
+            GameObject DoorsTreasure = _TreasureRoom.transform.Find("Doors").gameObject;
+            GameObject preciseDoorFromTreasure = DoorsTreasure.transform.Find("Top").gameObject;
+            preciseDoorFromTreasure.GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+        else if (MainGrid[_TreasureX, _TreasureY - 1] is GameObject)
+        {
+            GameObject RoomToTreasure = MainGrid[_TreasureX, _TreasureY - 1];
+            GameObject DoorsToTreasure = RoomToTreasure.transform.Find("Doors").gameObject;
+            GameObject preciseDoorToTreasure = DoorsToTreasure.transform.Find("Right").gameObject;
+            preciseDoorToTreasure.GetComponent<SpriteRenderer>().color = Color.green;
+            GameObject DoorsTreasure = _TreasureRoom.transform.Find("Doors").gameObject;
+            GameObject preciseDoorFromTreasure = DoorsTreasure.transform.Find("Left").gameObject;
+            preciseDoorFromTreasure.GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+        else if (MainGrid[_TreasureX, _TreasureY + 1] is GameObject)
+        {
+            GameObject RoomToTreasure = MainGrid[_TreasureX, _TreasureY + 1];
+            GameObject DoorsToTreasure = RoomToTreasure.transform.Find("Doors").gameObject;
+            GameObject preciseDoorToTreasure = DoorsToTreasure.transform.Find("Left").gameObject;
+            preciseDoorToTreasure.GetComponent<SpriteRenderer>().color = Color.green;
+            GameObject DoorsTreasure = _TreasureRoom.transform.Find("Doors").gameObject;
+            GameObject preciseDoorFromTreasure = DoorsTreasure.transform.Find("Right").gameObject;
+            preciseDoorFromTreasure.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
 
     }

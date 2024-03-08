@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5696134985212060213}
   - component: {fileID: 610616875751957883}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 4646806904412746529}
   - component: {fileID: 2324528421776556089}
   - component: {fileID: 333843498669798634}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WD (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4577492500701997096}
   - component: {fileID: 802177966825917811}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -1028,6 +1028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34977d5f031cedc4987ae2a9c3de432c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preciseDoorToTreasure: {fileID: 0}
+  preciseDoorFromTreasure: {fileID: 0}
 --- !u!1 &955268254478218623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848453659833636153}
   - component: {fileID: 4132619528180892553}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -1840,7 +1842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5257472999781422981}
   - component: {fileID: 2951650312979672710}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -2126,7 +2128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4902033577744242263}
   - component: {fileID: 8784807495950422774}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -2546,6 +2548,25 @@ MonoBehaviour:
   listMobGrid: []
   listObjectGrid: []
   listInterGrid: []
+  listBossGrids: []
+  listTreasureGrids: []
+  listInterTreasureGrid:
+  - {fileID: 5913307922438943964, guid: 533e0f49e5242574d92de1ffed3e456a, type: 3}
+  - {fileID: 7663334366057218345, guid: 6e48672ad4e79514895eb32e41fbc52a, type: 3}
+  - {fileID: 6121206227812369409, guid: 440334fe37921864bb8d0aa8099dee1a, type: 3}
+  - {fileID: 788030691236640390, guid: a6942eb98294010489ebbab99480a9e7, type: 3}
+  listBossMobs: []
+  listBossObjects:
+  - {fileID: 6182585623017335095, guid: 2c06a5a7fe0e19544bcd7a485be15a3f, type: 3}
+  listMobs:
+  - {fileID: 7274999258752704000, guid: 51a1218700a15024bb657e0f8ebc0571, type: 3}
+  - {fileID: 5892975354148671148, guid: 78dfce7a63d7f1246acbea5d2aa67a92, type: 3}
+  listObjects:
+  - {fileID: 6182585623017335095, guid: 2c06a5a7fe0e19544bcd7a485be15a3f, type: 3}
+  listInters:
+  - {fileID: 743761755571827345, guid: 64fd8e7532365ce4f8679afb9f1a1199, type: 3}
+  - {fileID: 2827857900157699895, guid: 4d8858cfeec111e48a43c22680404792, type: 3}
+  numberMobs: 4
 --- !u!1 &2899424012295399559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,7 +3618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7993733070473650162}
   - component: {fileID: 5749193594493018154}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -3885,9 +3906,9 @@ GameObject:
   - component: {fileID: 5538667690836069448}
   - component: {fileID: 5937642306716767666}
   - component: {fileID: 2968921811773502986}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WT (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4266,7 +4287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5651634136068690948}
   - component: {fileID: 5942917734359519848}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -4350,7 +4371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 704090930561406265}
   - component: {fileID: 5478094984669524177}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -4854,7 +4875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3652736231540617312}
   - component: {fileID: 8544496989116405443}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -5107,9 +5128,9 @@ GameObject:
   - component: {fileID: 6324509354339113543}
   - component: {fileID: 3847022481276926331}
   - component: {fileID: 690665899423942958}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WR (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5237,9 +5258,9 @@ GameObject:
   - component: {fileID: 764802187099397453}
   - component: {fileID: 7452224367203732416}
   - component: {fileID: 8337147145180556838}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WL (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5534,7 +5555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3488323000891014428}
   - component: {fileID: 6412149450646195043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -5904,7 +5925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2623723471146084097}
   - component: {fileID: 4991993690512272181}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -6248,7 +6269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6364952381931340372}
   - component: {fileID: 8660087849640118775}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -6705,7 +6726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7082715198797353021}
   - component: {fileID: 5983884236860257064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -6789,7 +6810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4974204357701747513}
   - component: {fileID: 9152088891170728762}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -6974,7 +6995,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18, y: 10, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3850890662586356608}
@@ -7020,13 +7041,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38e0a6c77e3eb11488d419186bc7e355, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
+  m_DrawMode: 2
+  m_Size: {x: 4, y: 2}
+  m_AdaptiveModeThreshold: 0
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
@@ -7041,7 +7062,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7664642302686996466}
   - component: {fileID: 5244966344470156810}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -7881,7 +7902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5586666778383093793}
   - component: {fileID: 1553741352376896900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -8554,7 +8575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1282779700382962450}
   - component: {fileID: 4825587260018826826}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -8722,7 +8743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7174425652074578421}
   - component: {fileID: 3611165707924423246}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -8806,7 +8827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3251320513789797458}
   - component: {fileID: 6418650609560695487}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
@@ -8890,7 +8911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4266121215670621880}
   - component: {fileID: 9044478445421847712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SolidObject
   m_TagString: SolidObject
   m_Icon: {fileID: 0}
