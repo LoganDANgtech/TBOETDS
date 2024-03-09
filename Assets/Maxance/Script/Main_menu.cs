@@ -16,6 +16,7 @@ public class Main_menu : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         Menuprincipale.SetActive(true);
+        Time.timeScale = 1f;
     }
     public void PlayGame()
     {

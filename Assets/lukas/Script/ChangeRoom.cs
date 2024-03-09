@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class ChangeRoom : MonoBehaviour
@@ -32,28 +31,28 @@ public class ChangeRoom : MonoBehaviour
     {// && GameObject.FindGameObjectsWithTag("ennemy").Length == 0 --> test
         if (_gendj.OpensDoor[x, y])
         {
-            if (collision.gameObject.tag == "TopDoor" && GameObject.FindGameObjectsWithTag("ennemy").Length == 0)
+            if (collision.gameObject.tag == "TopDoor" )
             {
                 slidingMain = new Vector3(0, 10, 0);
                 slidingSub = new Vector3(0, 1, 0);
                 slidingPlayer = new Vector3(0, 4, 0);
                 x++;
             }
-            if (collision.gameObject.tag == "BottomDoor" && GameObject.FindGameObjectsWithTag("ennemy").Length == 0)
+            if (collision.gameObject.tag == "BottomDoor" )
             {
                 slidingMain = new Vector3(0, -10, 0);
                 slidingSub = new Vector3(0, -1, 0);
                 slidingPlayer = new Vector3(0, -4, 0);
                 x--;
             }
-            if (collision.gameObject.tag == "LeftDoor" && GameObject.FindGameObjectsWithTag("ennemy").Length == 0)
+            if (collision.gameObject.tag == "LeftDoor")
             {
                 slidingMain = new Vector3(-18, 0, 0);
                 slidingSub = new Vector3(-1, 0, 0);
                 slidingPlayer = new Vector3(-4, 0, 0);
                 y--;
             }
-            if (collision.gameObject.tag == "RightDoor" && GameObject.FindGameObjectsWithTag("ennemy").Length == 0)
+            if (collision.gameObject.tag == "RightDoor")
             {
                 slidingMain = new Vector3(18, 0, 0);
                 slidingSub = new Vector3(1, 0, 0);
@@ -61,7 +60,7 @@ public class ChangeRoom : MonoBehaviour
                 y++;
             }
             
-            if ((collision.gameObject.tag == "RightDoor" || collision.gameObject.tag == "LeftDoor" || collision.gameObject.tag == "BottomDoor" || collision.gameObject.tag == "TopDoor") && GameObject.FindGameObjectsWithTag("ennemy").Length == 0)
+            if ((collision.gameObject.tag == "RightDoor" || collision.gameObject.tag == "LeftDoor" || collision.gameObject.tag == "BottomDoor" || collision.gameObject.tag == "TopDoor"))
             {
                 _mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
                 _CamMM = GameObject.FindGameObjectWithTag("CamMM").GetComponent<Camera>();

@@ -8,10 +8,15 @@ public class explosivebarrel : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     private Animator animator;
+    private MonsterDamage _monsterDamage;
+    private CircleCollider2D _circleCollider;
+
     public float force = 10;
     // Start is called before the first frame update
     void Start()
     {
+        _circleCollider = GetComponent<CircleCollider2D>();
+        _monsterDamage = GameObject.FindObjectOfType<MonsterDamage>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
@@ -24,6 +29,7 @@ public class explosivebarrel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Playerbatte"))
         {
+
             force = 8;
             Vector3 direction = (player.transform.position - transform.position) * -1;
             rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
@@ -44,11 +50,23 @@ public class explosivebarrel : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, rotz);
 
         }
+        if (_circleCollider.isTrigger)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                _monsterDamage.Feur(gameObject);
+            }
+            if (other.gameObject.CompareTag("ennemy"))
+            {
+                other.gameObject.GetComponent<SlimeSplit>().TakeDamage(10);
+                other.gameObject.GetComponent<Ennemyshooting>().TakeDamage(10);
+            }
+        }
     }
     public void AlertObservers(string message)
     {
         if (message.Equals("explode"))
-        { 
+        {
             Destroy(gameObject);
         }
 

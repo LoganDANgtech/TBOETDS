@@ -157,7 +157,10 @@ public class ChangeDoors : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        GameObject[] ennemis = GameObject.FindGameObjectsWithTag("ennemy");
+
+        int nombreEnnemis = ennemis.Length;
+        if (nombreEnnemis <= 0)
         {
             ChangeDoorColor();
         }

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1622116776137377921}
   - component: {fileID: 4457491266082294432}
   - component: {fileID: 6199732406852049064}
+  - component: {fileID: 1137642993437912296}
+  - component: {fileID: 8888876593597918864}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,6 +155,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+--- !u!114 &1137642993437912296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852285710956902396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2a0cccda4097d4d818afcf5cbc270a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerSpeed: 6
+  RUBBERBALL: 0
+  UnO: 0
+  KnockFromRight: 0
+--- !u!114 &8888876593597918864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852285710956902396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b3f754fa16ec94a808b92bfefc56c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 6
+  health: 6
+  Player: {fileID: 852285710956902396}
+  Weapon: {fileID: 8156263442298483588}
+  Animator: {fileID: 7492223861983984275}
+  mortmenu: {fileID: 0}
 --- !u!1 &1254828884962530388
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3067694162251089070}
   - component: {fileID: 1571415190916270803}
-  - component: {fileID: 7351594711554184554}
+  - component: {fileID: 7492223861983984275}
   m_Layer: 0
   m_Name: BodyPlayer
   m_TagString: Untagged
@@ -226,8 +262,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
-  m_Sprite: {fileID: 80594078, guid: eeeeea5c98eb6264daf91b8559391e69, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 2020208758, guid: 3f10657f6f8220d4b8c309642d495e9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -238,22 +274,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7351594711554184554
-MonoBehaviour:
+--- !u!95 &7492223861983984275
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254828884962530388}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eddc7efc201f9a49b73cb79937c987a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personnage_0: {fileID: 80594078, guid: eeeeea5c98eb6264daf91b8559391e69, type: 3}
-  personnage_1: {fileID: -492514196, guid: eeeeea5c98eb6264daf91b8559391e69, type: 3}
-  personnage_2: {fileID: 1232594545, guid: eeeeea5c98eb6264daf91b8559391e69, type: 3}
-  personnage_3: {fileID: 605335776, guid: eeeeea5c98eb6264daf91b8559391e69, type: 3}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1de954248a9a4da4292e623e133d9590, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4127321708835020037
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +504,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1669811693, guid: ff20232884c173d4ea7d6f4784e7e0d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -535,8 +576,8 @@ Transform:
   m_GameObject: {fileID: 8156263442298483588}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: -0.099, y: -0.147, z: 0}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8422405134749582880}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterDamage : MonoBehaviour
 {
-    public int damage;
+    public int damage = 1;
     private PlayerHealth playerHealth;
     private PlayerMovement _PlayerMovement;
 
@@ -15,15 +15,7 @@ public class MonsterDamage : MonoBehaviour
     }
     public void Feur(GameObject collision)
     {
-        _PlayerMovement.KBCounter = _PlayerMovement.KBTotalTime;
-        if(collision.transform.position.x <= transform.position.x)
-        {
-            _PlayerMovement.KnockFromRight = true;
-        }
-        if(collision.transform.position.x > transform.position.x)
-        {
-            _PlayerMovement.KnockFromRight = false;
-        }
+        _PlayerMovement.Knockback(collision.transform.position);
         playerHealth.TakeDamage(damage);
     }
 }

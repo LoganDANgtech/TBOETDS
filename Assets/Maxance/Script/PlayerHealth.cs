@@ -22,7 +22,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        print("ui");
         if (!invincible)
         {
             health -= 1;
@@ -39,10 +38,10 @@ public class PlayerHealth : MonoBehaviour
     }
     public IEnumerator waitInvincibility()
     {
-        //invincible = true;
-        //Animator.SetBool("invincible",true);
-        yield return new WaitForSeconds(1);
+        invincible = true;
+        Animator.SetBool("invulerable",true);
+        yield return new WaitForSeconds(2);
         invincible = false;
-        Animator.SetBool("invincible",false);
+        Animator.SetBool("invulerable",false);
     }
 }

@@ -7,10 +7,12 @@ public class Bulletscript : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     private SpriteRenderer _spriteRenderer;
-    private bool friendly = false;
     private float timer;
+
     public int bounce = 1;
     public float force = 5;
+    public bool friendly = false;
+
     private PlayerMovement _playM;
     private MonsterDamage _monsterDamage;
 
@@ -57,7 +59,6 @@ public class Bulletscript : MonoBehaviour
             {
                 gameObject.transform.localScale = new Vector3(5, 5, 1);
             }
-            print(bounce);
             force = 15;
             Vector3 direction = (player.transform.position - transform.position) * -1;
             rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
@@ -76,6 +77,7 @@ public class Bulletscript : MonoBehaviour
             Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("ennemy") && friendly) {
+            
             Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("Wall"))

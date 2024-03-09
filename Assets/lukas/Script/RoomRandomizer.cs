@@ -29,7 +29,7 @@ public class RoomRandomizer : MonoBehaviour
     private int PosInter;
 
 
-    public int numberMobs = 4;
+    public int numberMobs = 7;
 
     public void Lambda()
     {

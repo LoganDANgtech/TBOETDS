@@ -27,6 +27,8 @@ TagManager:
   - obstacle
   - weapon
   - Audio
+  - Bullet
+  - barrel
   layers:
   - Default
   - TransparentFX
